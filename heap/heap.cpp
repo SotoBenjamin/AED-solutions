@@ -65,10 +65,10 @@ struct PQueue{
 		N--;
 		if(N == 0) return;
 		if(type == MAX_HEAP){
-			max_heapify(1);
+			max_heapify_down(1);
 			return;
 		}
-		min_heapify(1);
+		min_heapify_down(1);
 	}
 	
 	
@@ -99,7 +99,7 @@ struct PQueue{
 		}
 	}
 	
-	void min_heapify(int i){
+	void min_heapify_down(int i){
 		int l = left(i);
 		int r = right(i);
 		int lowest = i;
@@ -107,11 +107,11 @@ struct PQueue{
 		if(r <= N && arr[r] < arr[lowest]) lowest = r;
 		if(lowest != i){
 			swap(arr[i],arr[lowest]);
-			min_heapify(lowest);
+			min_heapify_down(lowest);
 		}
 	}
 	
-	void max_heapify(int i){
+	void max_heapify_down(int i){
 		int l = left(i);
 		int r = right(i);
 		int largest = i;
@@ -119,7 +119,7 @@ struct PQueue{
 		if(r <= N && arr[r] > arr[largest]) largest = r;
 		if(largest != i){
 			swap(arr[i],arr[largest]);
-			max_heapify(largest);
+			max_heapify_down(largest);
 		}
 	}
 
